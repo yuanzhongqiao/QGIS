@@ -1,219 +1,183 @@
-<img src="images/README-md/main_logo.png" width="300">
-
-[![🧪 QGIS tests](https://github.com/qgis/QGIS/actions/workflows/run-tests.yml/badge.svg)](https://github.com/qgis/QGIS/actions/workflows/run-tests.yml?query=branch%3Amaster+event%3Apush)
-[![Docker Status](https://img.shields.io/docker/automated/qgis/qgis.svg)](https://hub.docker.com/r/qgis/qgis/tags)
-[![Build Status](https://dev.azure.com/qgis/QGIS/_apis/build/status/qgis.QGIS?branchName=master)](https://dev.azure.com/qgis/QGIS/_build/latest?definitionId=1&branchName=master)
-[![🪟 MingW64 Windows 64bit Build](https://github.com/qgis/QGIS/actions/workflows/mingw64.yml/badge.svg)](https://github.com/qgis/QGIS/actions/workflows/mingw64.yml?query=branch%3Amaster+event%3Apush)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5869837.svg)](https://doi.org/10.5281/zenodo.5869837)
-
-QGIS is a full-featured, user-friendly, free-and-open-source (FOSS) geographical information system (GIS) that runs on Unix platforms, Windows, and MacOS.
-
-<!-- TOC generated with https://freelance-tech-writer.github.io/table-of-contents-generator/index.html -->
-
-- [Features](#features)
-  - [1. Flexible and powerful spatial data management](#1-flexible-and-powerful-spatial-data-management)
-  - [2. Beautiful cartography](#2-beautiful-cartography)
-  - [3. Advanced and robust geospatial analysis](#3-advanced-and-robust-geospatial-analysis)
-  - [4. Powerful customization and extensibility](#4-powerful-customization-and-extensibility)
-  - [5. QGIS Server](#5-qgis-server)
-- [Under the hood](#under-the-hood)
-  - [Versions and release cycle](#versions-and-release-cycle)
-  - [Free and Open Source](#free-and-open-source)
-- [Installing and using QGIS](#installing-and-using-qgis)
-  - [Documentation](#documentation)
-  - [Help and support channels](#help-and-support-channels)
-- [Get involved with the community](#get-involved-with-the-community)
-  - [Bug reporting and bug fixing](#bug-reporting-and-bug-fixing)
-  - [New features and enhancements](#new-features-and-enhancements)
-  - [Translations](#translations)
-  - [Other ways to contribute](#other-ways-to-contribute)
-
-## Features 
-
-### 1. Flexible and powerful spatial data management
-
-- Support for raster, vector, mesh, and point cloud data in a range of industry-standard formats
-    - *Raster formats include*: GeoPackage, GeoTIFF, GRASS, ArcInfo binary and ASCII grids, ERDAS Imagine SDTS, WMS, WCS, PostgreSQL/PostGIS, and [other GDAL supported formats](https://gdal.org/drivers/raster/index.html).
-    - *Vector formats include*: GeoPackage, ESRI shapefiles, GRASS, SpatiaLite, PostgreSQL/PostGIS, MSSQL, Oracle, WFS, Vector Tiles and [other OGR supported formats](http://www.gdal.org/ogr_formats.html). 
-    - *Mesh formats include*: NetCDF, GRIB, 2DM, and [other MDAL supported formats](https://github.com/lutraconsulting/MDAL#supported-formats).
-    - *Point-cloud format*: LAS/LAZ and EPT datasets.
-- Data abstraction framework, with local files, spatial databases (PostGIS, SpatiaLite, SQL Server, Oracle, SAP HANA), and web services (WMS, WCS, WFS, ArcGIS REST) all accessed through a unified data model and browser interface, and as flexible layers in user-created projects 
-- Spatial data creation via visual and numerical digitizing and editing, as well as georeferencing of raster and vector data
-- On-the-fly reprojection between coordinate reference systems (CRS)
-- Nominatim (OpenStreetMap) geocoder access
-- Temporal support
-
-*Example: Temporal animation*
-
-![Example: Temporal animation](images/README-md/icebergs.gif "Temporal animation")
-
-*Example: 3D map view*
-
-![Example: 3D map view](https://docs.qgis.org/latest/en/_images/3dmapview.png "3D map view")
-
-### 2. Beautiful cartography
-- Large variety of rendering options in 2D and 3D
-- Fine control over symbology, labeling, legends and additional graphical elements for beautifully rendered maps
-- Respect for embedded styling in many spatial data sources (e.g. KML and TAB files, Mapbox-GL styled vector tiles)
-- In particular, near-complete replication (and significant extension) of symbology options that are available in proprietary software by ESRI
-- Advanced styling using data-defined overrides, blending modes, and draw effects
-- 500+ built-in color ramps (cpt-city, ColorBrewer, etc.) 
-- Create and update maps with specified scale, extent, style, and decorations via saved layouts
-- Generate multiple maps (and reports) automatically using QGIS Atlas and QGIS Reports
-- Display and export elevation profile plots with flexible symbology
-- Flexible output direct to printer, or as image (raster), PDF, or SVG for further customization 
-- On-the-fly rendering enhancements using geometry generators (e.g. create and style new geometries from existing features)
-- Preview modes for inclusive map making (e.g. monochrome, color blindness)
-
-*[Example: Map of Bogota, Colombia in the style of Starry Starry Night, by Andrés Felipe Lancheros Sánchez](https://flic.kr/p/2jFfGJP)*
-
-![Map of Bogota, Colombia in the style of Starry Starry Night](https://live.staticflickr.com/65535/50327326323_3da28f0d86_b.jpg "Map of Bogota, Colombia in the style of Starry Starry Night")
-
-For more maps created with QGIS, visit the [QGIS Map Showcase Flickr Group](https://www.flickr.com/groups/2244553@N22/pool/with/50355460063/).
-
-![QGIS Map Showcase](images/README-md/qgis_map_showcase.png "QGIS Map Showcase")
-
-### 3. Advanced and robust geospatial analysis
-- Powerful processing framework with 200+ native processing algorithms
-- Access to 1000+ processing algorithms via providers such as GDAL, SAGA, GRASS, OrfeoToolbox, as well as custom models and processing scripts
-- Geospatial database engine (filters, joins, relations, forms, etc.), as close to datasource- and format-independent as possible 
-- Immediate visualization of geospatial query and geoprocessing results
-- Model designer and batch processing
-
-*Example: Travel isochrones*
-
-![Example: Travel isochrones](images/README-md/network_analysis_2.png "Travel isochrones")
-
-*Example: Model designer*
-
-![Example: model designer](https://docs.qgis.org/latest/en/_images/models_model.png "Model designer")
-
-### 4. Powerful customization and extensibility
-
-- Fully customizable user experience, including user interface and application settings that cater to power-users and beginners alike
-- Rich [expression engine](https://docs.qgis.org/testing/en/docs/user_manual/working_with_vector/expression.html) for maximum flexibility in visualization and processing
-- Broad and varied [plugin ecosystem](https://plugins.qgis.org/) that includes data connectors, digitizing aids, advanced analysis and charting tools, 
-in-the-field data capture, conversion of ESRI style files, etc.
-- Style manager for creating, storing, and managing styles
-- [QGIS style hub](https://plugins.qgis.org/styles/) for easy sharing of styles
-- Python and C++ API for standalone (headless) applications as well as in-application comprehensive scripting (PyQGIS)
-
-*Example: Style manager*
-
-![Example: Style manager](https://docs.qgis.org/latest/en/_images/stylemanager.png "Style Manager")
-
-*Example: Plugins*
-
-![Example: Plugins](images/README-md/plugins_1.png "Plugins")
-
-<!-- Kill this one for now, since the example provided is Python2 not 3
-Example: Python console
-
-![Example: Python console](https://docs.qgis.org/latest/en/_images/python_console_editor.png "Python console")
--->
-
-### 5. QGIS Server
-
-Headless map server -- running on Linux, macOS, Windows, or in a docker container -- that shares the same code base as QGIS.
-
-- Industry-standard protocols (WMS, WFS, WFS3/OGC API for Features and WCS) allow plug-n-play with any software stack
-- Works with any web server (Apache, nginx, etc) or standalone
-- All beautiful QGIS cartography is supported with best-in-class support for printing
-- Fully customizable with Python scripting support
-
-*Example: QGIS server WMS response*
-
-![Example: QGIS Server response to a WMS request](https://docs.qgis.org/latest/en/_images/server_selection_parameter.png "QGIS Server response to a WMS request")
-
-*Example: QGIS server WFS response*
-
-![Example: QGIS Server response to a WFS Feature request](https://docs.qgis.org/latest/en/_images/server_wfs3_feature.png "QGIS Server response to a WFS Feature request")
-
-## Under the hood
-
-QGIS is developed using the [Qt toolkit](https://qt.io) and C++, since 2002, and has a pleasing, easy to use graphical
-user interface with multilingual support. It is maintained by an active developer team and supported by vibrant 
-community of GIS professionals and enthusiasts as well as geospatial data publishers and end-users. 
-
-### Versions and release cycle
-
-QGIS development and releases follow a [time based schedule/roadmap](https://www.qgis.org/en/site/getinvolved/development/roadmap.html). There are three main branches of QGIS that users can install. These are the **Long Term Release (LTR)** branch, **Latest Release (LR)** branch, and the **Development (Nightly)** branch. 
-
-Every month, there is a **Point Release** that provides bug-fixes to the LTR and LR.
-
-### Free and Open Source
-
-QGIS is released under the GNU Public License (GPL) Version 2 or any later version.
-Developing QGIS under this license means that you can (if you want to) inspect
-and modify the source code and guarantees that you, our happy user will always
-have access to a GIS program that is free of cost and can be freely
-modified.
-
-QGIS is part of the Open-Source Geospatial Foundation ([OSGeo](https://www.osgeo.org/)), offering a range of complementary open-source GIS software projects.
-
-## Installing and using QGIS
-
-Precompiled binaries for QGIS are available at [the QGIS.org download page](https://www.qgis.org/en/site/forusers/download.html).
-Please follow the installation instructions carefully.
-
-The [building guide](INSTALL.md) can be used to get started with building QGIS from source.
-
-For installation of QGIS Server, see its [getting started documentation](https://docs.qgis.org/testing/en/docs/server_manual/getting_started.html).
-
-### Documentation
-
-A range of [documentation](https://qgis.org/en/docs/index.html) is available. This includes:
-
-- [Training Manual](https://docs.qgis.org/latest/en/docs/training_manual/index.html)
-- [QGIS User Guide](https://docs.qgis.org/latest/en/docs/user_manual/index.html)
-- [QGIS Server Guide](https://docs.qgis.org/latest/en/docs/server_manual/index.html)
-- [Visual Changelog](https://qgis.org/en/site/forusers/visualchangelogs.html)
-- [Documentation Guidelines](https://docs.qgis.org/latest/en/docs/documentation_guidelines/index.html)
-- [QGIS Python (PyQGIS) Cookbook](https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/index.html)
-- [QGIS Python (PyQGIS) API](https://qgis.org/pyqgis/)
-- [QGIS C++ API](https://qgis.org/api/)
-- [Developers Guide](https://docs.qgis.org/latest/en/docs/developers_guide/index.html)
-
-### Help and support channels
-
-There are several channels where you can find help and support for QGIS:
-
-- Using the [QGIS community site](https://qgis.org)
-- Joining the [qgis-users mailing list](https://lists.osgeo.org/mailman/listinfo/qgis-user)
-- Chatting with other users real-time. *Please wait around for a response to your question as many folks on the channel are doing other things and it may take a while for them to notice your question. The following paths all take you to the same chat room:*
-    - Using an IRC client and joining the [#qgis](http://webchat.freenode.net/?channels=#qgis) channel on irc.freenode.net.
-    - Using a Matrix client and joining the [#qgis:matrix.org](http://matrix.to/#/#qgis:matrix.org) room.
-    - Using [Gitter](https://gitter.im/qgis/QGIS) chat.
- - At the [GIS stackexchange](https://gis.stackexchange.com/) or [r/QGIS reddit](https://www.reddit.com/r/QGIS/), which are not maintained by the QGIS team, but where the QGIS and broader GIS community provides lots of advice
-- [Other support channels](https://qgis.org/en/site/forusers/support.html)
-
-## Get involved with the community
-
-### Bug reporting and bug fixing
-
-You can help us **by submitting bug reports or fixing bugs** in the [QGIS bug tracker](https://github.com/qgis/QGIS/issues/).
-
-### New features and enhancements
-
-If you wish to contribute patches you can:
-
-1. [fork the project](https://help.github.com/forking/)
-1. make your changes
-1. commit to your repository
-1. and then [create a pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
-
- The development team can then review your contribution and commit it upstream as appropriate.
-
-If you commit a new feature, add `[FEATURE]` to your commit message AND give a clear description of the new feature. The label `Needs documentation` will be added by maintainers and will automatically create an issue on the QGIS-Documentation repo, where you or others should write documentation about it.
-
-For large-scale changes, you can open a [QEP (QGIS Enhancement Proposal)](https://github.com/qgis/QGIS-Enhancement-Proposals). QEPs are used in the process of creating and discussing new enhancements or policy for QGIS. 
-
-### Translations
-
-Please help translate QGIS to your language. At this moment about forty languages are already available in the Desktop user interface and about eighty languages are available in transifex ready to be translated.
-
-The [translation](https://qgis.org/en/site/getinvolved/translate.html) process is managed by the [Translation Team](https://qgis.org/en/site/getinvolved/governance/governance.html#gui-translation) and all the activities are done under the [Transifex](https://www.transifex.com/qgis/) platform.
-
-### Other ways to contribute
-
-If you are not a developer, there are many other possibilities which do not require programming skills to help QGIS to evolve. Check our [project homepage for more information](https://qgis.org/en/site/getinvolved/index.html).
+<div class="Box-sc-g0xbh4-0 bJMeLZ js-snippet-clipboard-copy-unpositioned" data-hpc="true"><article class="markdown-body entry-content container-lg" itemprop="text"><p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/qgis/QGIS/blob/master/images/README-md/main_logo.png"><img src="https://github.com/qgis/QGIS/raw/master/images/README-md/main_logo.png" width="300" style="max-width: 100%;"></a></p>
+<p dir="auto"><a href="https://github.com/qgis/QGIS/actions/workflows/run-tests.yml?query=branch%3Amaster+event%3Apush"><img src="https://github.com/qgis/QGIS/actions/workflows/run-tests.yml/badge.svg" alt="🧪 QGIS 测试" style="max-width: 100%;"></a>
+<a href="https://hub.docker.com/r/qgis/qgis/tags" rel="nofollow"><img src="https://camo.githubusercontent.com/1397950c73167024b8ffe0cf5e3e767a4ee307745aea6c009b662c00e378dfdf/68747470733a2f2f696d672e736869656c64732e696f2f646f636b65722f6175746f6d617465642f716769732f716769732e737667" alt="Docker 状态" data-canonical-src="https://img.shields.io/docker/automated/qgis/qgis.svg" style="max-width: 100%;"></a>
+<a href="https://dev.azure.com/qgis/QGIS/_build/latest?definitionId=1&amp;branchName=master" rel="nofollow"><img src="https://camo.githubusercontent.com/dabe357a9cf674181fb4281cc0001c13f387e0db45492169c0a805919da892a6/68747470733a2f2f6465762e617a7572652e636f6d2f716769732f514749532f5f617069732f6275696c642f7374617475732f716769732e514749533f6272616e63684e616d653d6d6173746572" alt="构建状态" data-canonical-src="https://dev.azure.com/qgis/QGIS/_apis/build/status/qgis.QGIS?branchName=master" style="max-width: 100%;"></a>
+<a href="https://securityscorecards.dev/viewer/?uri=github.com/qgis/QGIS" rel="nofollow"><img src="https://camo.githubusercontent.com/d31ac1f0e74ffab455babb244eac31ed11e4e9c155758e0f0cc1f9eddc05a2ac/68747470733a2f2f6170692e736563757269747973636f726563617264732e6465762f70726f6a656374732f6769746875622e636f6d2f716769732f514749532f6261646765" alt="OpenSSF 记分卡" data-canonical-src="https://api.securityscorecards.dev/projects/github.com/qgis/QGIS/badge" style="max-width: 100%;"></a>
+<a href="https://www.bestpractices.dev/projects/1581" rel="nofollow"><img src="https://camo.githubusercontent.com/924c23837373ff59746b4ba8bf84e4505914699556a5a0be870098499bd3174a/68747470733a2f2f7777772e626573747072616374696365732e6465762f70726f6a656374732f313538312f6261646765" alt="OpenSSF 最佳实践" data-canonical-src="https://www.bestpractices.dev/projects/1581/badge" style="max-width: 100%;"></a>
+<a href="https://github.com/qgis/QGIS/actions/workflows/mingw64.yml?query=branch%3Amaster+event%3Apush"><img src="https://github.com/qgis/QGIS/actions/workflows/mingw64.yml/badge.svg" alt="🪟 MingW64 Windows 64 位构建" style="max-width: 100%;"></a>
+<a href="https://doi.org/10.5281/zenodo.5869837" rel="nofollow"><img src="https://camo.githubusercontent.com/d8e6ce3b7688a0d645e6c4d0ce6d74513760df0c51c2a82608c105fbddabfb61/68747470733a2f2f7a656e6f646f2e6f72672f62616467652f444f492f31302e353238312f7a656e6f646f2e353836393833372e737667" alt="DOI" data-canonical-src="https://zenodo.org/badge/DOI/10.5281/zenodo.5869837.svg" style="max-width: 100%;"></a></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QGIS 是一个功能齐全、用户友好、免费开源 (FOSS) 的地理信息系统 (GIS)，可在 Unix 平台、Windows 和 MacOS 上运行。</font></font></p>
+
+<ul dir="auto">
+<li><a href="#features"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">特征</font></font></a>
+<ul dir="auto">
+<li><a href="#1-flexible-and-powerful-spatial-data-management"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1.灵活强大的空间数据管理</font></font></a></li>
+<li><a href="#2-beautiful-cartography"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.精美的地图</font></font></a></li>
+<li><a href="#3-advanced-and-robust-geospatial-analysis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3. 先进而强大的地理空间分析</font></font></a></li>
+<li><a href="#4-powerful-customization-and-extensibility"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4.强大的定制和扩展性</font></font></a></li>
+<li><a href="#5-qgis-server"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5.QGIS服务器</font></font></a></li>
+</ul>
+</li>
+<li><a href="#under-the-hood"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在引擎盖下</font></font></a>
+<ul dir="auto">
+<li><a href="#versions-and-release-cycle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">版本和发布周期</font></font></a></li>
+<li><a href="#free-and-open-source"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">免费和开源</font></font></a></li>
+</ul>
+</li>
+<li><a href="#installing-and-using-qgis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装和使用QGIS</font></font></a>
+<ul dir="auto">
+<li><a href="#documentation"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文档</font></font></a></li>
+<li><a href="#help-and-support-channels"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">帮助和支持渠道</font></font></a></li>
+</ul>
+</li>
+<li><a href="#get-involved-with-the-community"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参与社区</font></font></a>
+<ul dir="auto">
+<li><a href="#bug-reporting-and-bug-fixing"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">错误报告和错误修复</font></font></a></li>
+<li><a href="#new-features-and-enhancements"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">新功能和增强功能</font></font></a></li>
+<li><a href="#translations"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">翻译</font></font></a></li>
+<li><a href="#other-ways-to-contribute"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他贡献方式</font></font></a></li>
+</ul>
+</li>
+</ul>
+<h2 tabindex="-1" dir="auto"><a id="user-content-features" class="anchor" aria-hidden="true" tabindex="-1" href="#features"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">特征</font></font></h2>
+<h3 tabindex="-1" dir="auto"><a id="user-content-1-flexible-and-powerful-spatial-data-management" class="anchor" aria-hidden="true" tabindex="-1" href="#1-flexible-and-powerful-spatial-data-management"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1.灵活强大的空间数据管理</font></font></h3>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持多种行业标准格式的栅格、矢量、网格和点云数据
+</font></font><ul dir="auto">
+<li><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">栅格格式包括</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：GeoPackage、GeoTIFF、GRASS、ArcInfo 二进制和 ASCII 网格、ERDAS Imagine SDTS、WMS、WCS、PostgreSQL/PostGIS 和</font></font><a href="https://gdal.org/drivers/raster/index.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他 GDAL 支持的格式</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></li>
+<li><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">矢量格式包括</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：GeoPackage、ESRI shapefiles、GRASS、SpatiaLite、PostgreSQL/PostGIS、MSSQL、Oracle、WFS、Vector Tiles 和</font></font><a href="https://www.gdal.org/ogr_formats.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他 OGR 支持的格式</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></li>
+<li><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网格格式包括</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：NetCDF、GRIB、2DM 和</font></font><a href="https://github.com/lutraconsulting/MDAL#supported-formats"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他 MDAL 支持的格式</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></li>
+<li><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">点云格式</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：LAS/LAZ 和 EPT 数据集。</font></font></li>
+</ul>
+</li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">数据抽象框架，具有本地文件、空间数据库（PostGIS、SpatiaLite、SQL Server、Oracle、SAP HANA）和 Web 服务（WMS、WCS、WFS、ArcGIS REST），所有这些都通过统一的数据模型和浏览器界面进行访问，并且作为用户创建的项目中的灵活层</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过视觉和数字数字化和编辑以及栅格和矢量数据的地理配准创建空间数据</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">坐标参考系统 (CRS) 之间的动态重投影</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nominatim (OpenStreetMap) 地理编码器访问</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">颞部支撑</font></font></li>
+</ul>
+<p dir="auto"><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例：时间动画</font></font></em></p>
+<p dir="auto"><animated-image data-catalyst=""><a target="_blank" rel="noopener noreferrer" href="https://github.com/qgis/QGIS/blob/master/images/README-md/icebergs.gif" data-target="animated-image.originalLink"><img src="https://github.com/qgis/QGIS/raw/master/images/README-md/icebergs.gif" alt="示例：时间动画" title="时间动画" style="max-width: 100%; display: inline-block;" data-target="animated-image.originalImage"></a>
+      <span class="AnimatedImagePlayer" data-target="animated-image.player" hidden="">
+        <a data-target="animated-image.replacedLink" class="AnimatedImagePlayer-images" href="https://github.com/qgis/QGIS/blob/master/images/README-md/icebergs.gif" target="_blank">
+          
+     
+<p dir="auto"><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例：3D 地图视图</font></font></em></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/c51beda8f11df10bdeda19c9a707717c7d9479942f29529f0453377e77ec9094/68747470733a2f2f646f63732e716769732e6f72672f6c61746573742f656e2f5f696d616765732f33646d6170766965772e706e67"><img src="https://camo.githubusercontent.com/c51beda8f11df10bdeda19c9a707717c7d9479942f29529f0453377e77ec9094/68747470733a2f2f646f63732e716769732e6f72672f6c61746573742f656e2f5f696d616765732f33646d6170766965772e706e67" alt="示例：3D 地图视图" title="3D地图视图" data-canonical-src="https://docs.qgis.org/latest/en/_images/3dmapview.png" style="max-width: 100%;"></a></p>
+<h3 tabindex="-1" dir="auto"><a id="user-content-2-beautiful-cartography" class="anchor" aria-hidden="true" tabindex="-1" href="#2-beautiful-cartography"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.精美的地图</font></font></h3>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多种 2D 和 3D 渲染选项</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对符号系统、标签、图例和其他图形元素进行精细控制，以呈现精美的地图</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">尊重许多空间数据源中的嵌入样式（例如 KML 和 TAB 文件、Mapbox-GL 样式矢量切片）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">特别是，ESRI 专有软件中提供的符号系统选项几乎完全复制（和显着扩展）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用数据定义的覆盖、混合模式和绘制效果的高级样式</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">500 多个内置色带（cpt-city、ColorBrewer 等）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过保存的布局创建和更新具有指定比例、范围、样式和装饰的地图</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用 QGIS Atlas 和 QGIS Reports 自动生成多个地图（和报告）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用灵活的符号系统显示和导出高程剖面图</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">灵活地直接输出到打印机，或作为图像（光栅）、PDF 或 SVG 进行进一步定制</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用几何生成器进行即时渲染增强（例如，根据现有功能创建新几何并设计其样式）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包容性地图制作的预览模式（例如单色、色盲）</font></font></li>
+</ul>
+<p dir="auto"><em><a href="https://flic.kr/p/2jFfGJP" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例：《星夜星夜》风格的哥伦比亚波哥大地图，作者：Andrés Felipe Lancheros Sánchez</font></font></a></em></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/9d6effa855b4104956738bcd7057f9751a03d80e08ebc69b858ebf232c60e08c/68747470733a2f2f6c6976652e737461746963666c69636b722e636f6d2f36353533352f35303332373332363332335f336461323866306438365f622e6a7067"><img src="https://camo.githubusercontent.com/9d6effa855b4104956738bcd7057f9751a03d80e08ebc69b858ebf232c60e08c/68747470733a2f2f6c6976652e737461746963666c69636b722e636f6d2f36353533352f35303332373332363332335f336461323866306438365f622e6a7067" alt="星夜星夜风格的哥伦比亚波哥大地图" title="星夜星夜风格的哥伦比亚波哥大地图" data-canonical-src="https://live.staticflickr.com/65535/50327326323_3da28f0d86_b.jpg" style="max-width: 100%;"></a></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如需了解更多使用 QGIS 创建的地图，请访问</font></font><a href="https://www.flickr.com/groups/2244553@N22/pool/with/50355460063/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QGIS 地图展示 Flickr 群组</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="/qgis/QGIS/blob/master/images/README-md/qgis_map_showcase.png"><img src="/qgis/QGIS/raw/master/images/README-md/qgis_map_showcase.png" alt="QGIS 地图展示" title="QGIS 地图展示" style="max-width: 100%;"></a></p>
+<h3 tabindex="-1" dir="auto"><a id="user-content-3-advanced-and-robust-geospatial-analysis" class="anchor" aria-hidden="true" tabindex="-1" href="#3-advanced-and-robust-geospatial-analysis"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3. 先进而强大的地理空间分析</font></font></h3>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">强大的处理框架，拥有200+本机处理算法</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过 GDAL、SAGA、GRASS、OrfeoToolbox 等提供商以及自定义模型和处理脚本访问 1000 多种处理算法</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">地理空间数据库引擎（过滤器、连接、关系、表单等），尽可能独立于数据源和格式</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">地理空间查询和地理处理结果的即时可视化</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模型设计器和批处理</font></font></li>
+</ul>
+<p dir="auto"><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例：旅行等时线</font></font></em></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="/qgis/QGIS/blob/master/images/README-md/network_analysis_2.png"><img src="/qgis/QGIS/raw/master/images/README-md/network_analysis_2.png" alt="示例：旅行等时线" title="旅行等时线" style="max-width: 100%;"></a></p>
+<p dir="auto"><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例：模型设计师</font></font></em></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/ed0cc7852502b0f22111d562d5149a452099eeccb7d285808dddc95360f9ac4d/68747470733a2f2f646f63732e716769732e6f72672f6c61746573742f656e2f5f696d616765732f6d6f64656c735f6d6f64656c2e706e67"><img src="https://camo.githubusercontent.com/ed0cc7852502b0f22111d562d5149a452099eeccb7d285808dddc95360f9ac4d/68747470733a2f2f646f63732e716769732e6f72672f6c61746573742f656e2f5f696d616765732f6d6f64656c735f6d6f64656c2e706e67" alt="示例：模型设计师" title="模型设计师" data-canonical-src="https://docs.qgis.org/latest/en/_images/models_model.png" style="max-width: 100%;"></a></p>
+<h3 tabindex="-1" dir="auto"><a id="user-content-4-powerful-customization-and-extensibility" class="anchor" aria-hidden="true" tabindex="-1" href="#4-powerful-customization-and-extensibility"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4.强大的定制和扩展性</font></font></h3>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">完全可定制的用户体验，包括满足高级用户和初学者需求的用户界面和应用程序设置</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">丰富的</font></font><a href="https://docs.qgis.org/testing/en/docs/user_manual/working_with_vector/expression.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表达引擎</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可实现可视化和处理的最大灵活性</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">广泛而多样的</font></font><a href="https://plugins.qgis.org/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">插件生态系统</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，包括数据连接器、数字化辅助工具、高级分析和图表工具、现场数据捕获、ESRI 样式文件转换等。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于创建、存储和管理样式的样式管理器</font></font></li>
+<li><a href="https://plugins.qgis.org/styles/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QGIS 风格中心</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，方便分享风格</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于独立（无头）应用程序以及应用程序内综合脚本 (PyQGIS) 的 Python 和 C++ API</font></font></li>
+</ul>
+<p dir="auto"><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例：样式管理器</font></font></em></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/37cfb62401814020e788d4d4d6e7a17af3bd6b90a63047d87b60654cfa9decd6/68747470733a2f2f646f63732e716769732e6f72672f6c61746573742f656e2f5f696d616765732f7374796c656d616e616765722e706e67"><img src="https://camo.githubusercontent.com/37cfb62401814020e788d4d4d6e7a17af3bd6b90a63047d87b60654cfa9decd6/68747470733a2f2f646f63732e716769732e6f72672f6c61746573742f656e2f5f696d616765732f7374796c656d616e616765722e706e67" alt="示例：样式管理器" title="风格经理" data-canonical-src="https://docs.qgis.org/latest/en/_images/stylemanager.png" style="max-width: 100%;"></a></p>
+<p dir="auto"><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例：插件</font></font></em></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/qgis/QGIS/blob/master/images/README-md/plugins_1.png"><img src="https://github.com/qgis/QGIS/raw/master/images/README-md/plugins_1.png" alt="示例：插件" title="插件" style="max-width: 100%;"></a></p>
+
+<h3 tabindex="-1" dir="auto"><a id="user-content-5-qgis-server" class="anchor" aria-hidden="true" tabindex="-1" href="#5-qgis-server"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5.QGIS服务器</font></font></h3>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">无头地图服务器——在 Linux、macOS、Windows 或 Docker 容器中运行——与 QGIS 共享相同的代码库。</font></font></p>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">行业标准协议（WMS、WFS、WFS3/OGC API for Features 和 WCS）允许与任何软件堆栈即插即用</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可与任何 Web 服务器（Apache、nginx 等）或独立运行</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所有精美的 QGIS 制图均配有一流的打印支持</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过 Python 脚本支持完全可定制</font></font></li>
+</ul>
+<p dir="auto"><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例：QGIS 服务器 WMS 响应</font></font></em></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3d04a970a2ccbcab416ef73d4b1cadff3ddc4322d327f556321ff32b3c551b0c/68747470733a2f2f646f63732e716769732e6f72672f6c61746573742f656e2f5f696d616765732f7365727665725f73656c656374696f6e5f706172616d657465722e706e67"><img src="https://camo.githubusercontent.com/3d04a970a2ccbcab416ef73d4b1cadff3ddc4322d327f556321ff32b3c551b0c/68747470733a2f2f646f63732e716769732e6f72672f6c61746573742f656e2f5f696d616765732f7365727665725f73656c656374696f6e5f706172616d657465722e706e67" alt="示例：QGIS Server 对 WMS 请求的响应" title="QGIS Server 对 WMS 请求的响应" data-canonical-src="https://docs.qgis.org/latest/en/_images/server_selection_parameter.png" style="max-width: 100%;"></a></p>
+<p dir="auto"><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例：QGIS 服务器 WFS 响应</font></font></em></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5fd74272db1502192db7f4fc72c2a970016f059fa0f1c7250b7acf46b121cffe/68747470733a2f2f646f63732e716769732e6f72672f6c61746573742f656e2f5f696d616765732f7365727665725f776673335f666561747572652e706e67"><img src="https://camo.githubusercontent.com/5fd74272db1502192db7f4fc72c2a970016f059fa0f1c7250b7acf46b121cffe/68747470733a2f2f646f63732e716769732e6f72672f6c61746573742f656e2f5f696d616765732f7365727665725f776673335f666561747572652e706e67" alt="示例：QGIS Server 对 WFS 功能请求的响应" title="QGIS Server 对 WFS 功能请求的响应" data-canonical-src="https://docs.qgis.org/latest/en/_images/server_wfs3_feature.png" style="max-width: 100%;"></a></p>
+<h2 tabindex="-1" dir="auto"><a id="user-content-under-the-hood" class="anchor" aria-hidden="true" tabindex="-1" href="#under-the-hood"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在引擎盖下</font></font></h2>
+<p dir="auto"><font style="vertical-align: inherit;"></font><a href="https://qt.io" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QGIS 自 2002 年起使用Qt 工具包</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和 C++开发</font><font style="vertical-align: inherit;">，拥有令人愉悦、易于使用的图形用户界面，并支持多语言。它由活跃的开发团队维护，并得到充满活力的 GIS 专业人士和爱好者社区以及地理空间数据发布者和最终用户的支持。</font></font></p>
+<h3 tabindex="-1" dir="auto"><a id="user-content-versions-and-release-cycle" class="anchor" aria-hidden="true" tabindex="-1" href="#versions-and-release-cycle"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">版本和发布周期</font></font></h3>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QGIS 的开发和发布遵循</font></font><a href="https://www.qgis.org/en/site/getinvolved/development/roadmap.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基于时间的时间表/路线图</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。用户可以安装 QGIS 的三个主要分支。它们是</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">长期发布 (LTR)</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分支、</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">最新发布 (LR)</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分支和</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">开发（每晚）</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分支。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">每个月都会有一个</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">点版本</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，为 LTR 和 LR 提供错误修复。</font></font></p>
+<h3 tabindex="-1" dir="auto"><a id="user-content-free-and-open-source" class="anchor" aria-hidden="true" tabindex="-1" href="#free-and-open-source"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">免费和开源</font></font></h3>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QGIS 根据 GNU 公共许可证 (GPL) 第 2 版或任何更高版本发布。在此许可证下开发 QGIS 意味着您可以（如果您愿意）检查和修改源代码，并保证您，我们的快乐用户将始终可以免费访问并且可以自由修改的 GIS 程序。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QGIS 是开源地理空间基金会 ( </font></font><a href="https://www.osgeo.org/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OSGeo</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ) 的一部分，提供一系列互补的开源 GIS 软件项目。</font></font></p>
+<h2 tabindex="-1" dir="auto"><a id="user-content-installing-and-using-qgis" class="anchor" aria-hidden="true" tabindex="-1" href="#installing-and-using-qgis"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装和使用QGIS</font></font></h2>
+<p dir="auto"><font style="vertical-align: inherit;"></font><a href="https://www.qgis.org/en/site/forusers/download.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QGIS 的预编译二进制文件可在QGIS.org 下载页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">获取</font><font style="vertical-align: inherit;">。请仔细遵循安装说明。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">构建</font></font><a href="/qgis/QGIS/blob/master/INSTALL.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可用于开始从源代码构建 QGIS。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关 QGIS Server 的安装，请参阅其</font></font><a href="https://docs.qgis.org/testing/en/docs/server_manual/getting_started.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">入门文档</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<h3 tabindex="-1" dir="auto"><a id="user-content-documentation" class="anchor" aria-hidden="true" tabindex="-1" href="#documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文档</font></font></h3>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有一系列</font></font><a href="https://qgis.org/en/docs/index.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文档</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可供使用。这包括：</font></font></p>
+<ul dir="auto">
+<li><a href="https://docs.qgis.org/latest/en/docs/training_manual/index.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">培训手册</font></font></a></li>
+<li><a href="https://docs.qgis.org/latest/en/docs/user_manual/index.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QGIS 用户指南</font></font></a></li>
+<li><a href="https://docs.qgis.org/latest/en/docs/server_manual/index.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QGIS 服务器指南</font></font></a></li>
+<li><a href="https://qgis.org/en/site/forusers/visualchangelogs.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">视觉变更日志</font></font></a></li>
+<li><a href="https://docs.qgis.org/latest/en/docs/documentation_guidelines/index.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文档指南</font></font></a></li>
+<li><a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/index.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QGIS Python (PyQGIS) 食谱</font></font></a></li>
+<li><a href="https://qgis.org/pyqgis/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QGIS Python (PyQGIS) API</font></font></a></li>
+<li><a href="https://qgis.org/api/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QGIS C++ API</font></font></a></li>
+<li><a href="https://docs.qgis.org/latest/en/docs/developers_guide/index.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">开发者指南</font></font></a></li>
+</ul>
+<h3 tabindex="-1" dir="auto"><a id="user-content-help-and-support-channels" class="anchor" aria-hidden="true" tabindex="-1" href="#help-and-support-channels"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">帮助和支持渠道</font></font></h3>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您可以通过多种渠道找到 QGIS 的帮助和支持：</font></font></p>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font><a href="https://qgis.org" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QGIS 社区网站</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加入</font></font><a href="https://lists.osgeo.org/mailman/listinfo/qgis-user" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">qgis-users 邮件列表</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">与其他用户实时聊天。</font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请等待对您的问题的答复，因为频道上的许多人正在做其他事情，他们可能需要一段时间才能注意到您的问题。以下路径都将您带到同一个聊天室：</font></font></em>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用 IRC 客户端并加入irc.freenode.net 上的</font></font><a href="https://webchat.freenode.net/?channels=#qgis" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#qgis</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">频道。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用 Matrix 客户端并加入</font></font><a href="https://matrix.to/#/#qgis:matrix.org" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#qgis:matrix.org</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">房间。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font><a href="https://gitter.im/qgis/QGIS" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gitter</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">聊天。</font></font></li>
+</ul>
+</li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在</font></font><a href="https://gis.stackexchange.com/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GIS stackexchange</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><a href="https://www.reddit.com/r/QGIS/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">r/QGIS reddit</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上，它们不是由 QGIS 团队维护的，但 QGIS 和更广泛的 GIS 社区提供了很多建议</font></font></li>
+<li><a href="https://qgis.org/en/site/forusers/support.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他支持渠道</font></font></a></li>
+</ul>
+<h2 tabindex="-1" dir="auto"><a id="user-content-get-involved-with-the-community" class="anchor" aria-hidden="true" tabindex="-1" href="#get-involved-with-the-community"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参与社区</font></font></h2>
+<h3 tabindex="-1" dir="auto"><a id="user-content-bug-reporting-and-bug-fixing" class="anchor" aria-hidden="true" tabindex="-1" href="#bug-reporting-and-bug-fixing"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">错误报告和错误修复</font></font></h3>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您可以</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过提交错误报告或修复</font></font></strong><font style="vertical-align: inherit;"></font><a href="https://github.com/qgis/QGIS/issues/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QGIS 错误跟踪器</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中的错误来帮助我们</font><font style="vertical-align: inherit;">。</font></font></p>
+<h3 tabindex="-1" dir="auto"><a id="user-content-new-features-and-enhancements" class="anchor" aria-hidden="true" tabindex="-1" href="#new-features-and-enhancements"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">新功能和增强功能</font></font></h3>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果您想贡献补丁，您可以：</font></font></p>
+<ol dir="auto">
+<li><a href="https://help.github.com/forking/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分叉该项目</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">做出你的改变</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">提交到您的存储库</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">然后</font></font><a href="https://help.github.com/articles/creating-a-pull-request-from-a-fork/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建一个拉取请求</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></li>
+</ol>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">然后，开发团队可以审查您的贡献并酌情将其提交到上游。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果您提交新功能，请添加</font></font><code>[FEATURE]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">到您的提交消息并给出新功能的清晰描述。该标签</font></font><code>Needs documentation</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将由维护人员添加，并自动在 QGIS-Documentation 存储库上创建问题，您或其他人应在其中编写有关它的文档。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对于大规模变更，您可以提出</font></font><a href="https://github.com/qgis/QGIS-Enhancement-Proposals"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QEP（QGIS 增强提案）</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。 QEP 用于创建和讨论 QGIS 新增强功能或政策的过程。</font></font></p>
+<h3 tabindex="-1" dir="auto"><a id="user-content-translations" class="anchor" aria-hidden="true" tabindex="-1" href="#translations"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">翻译</font></font></h3>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请帮助将 QGIS 翻译成您的语言。目前，桌面用户界面中已提供约 40 种语言，transifex 中已提供约 80 种语言可供翻译。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">翻译</font></font><a href="https://qgis.org/en/site/getinvolved/translate.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">流程由</font></font></a><font style="vertical-align: inherit;"></font><a href="https://qgis.org/en/site/getinvolved/governance/governance.html#gui-translation" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">翻译团队</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">管理</font><font style="vertical-align: inherit;">，所有活动均在</font></font><a href="https://www.transifex.com/qgis/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Transifex</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">平台下完成。</font></font></p>
+<h3 tabindex="-1" dir="auto"><a id="user-content-other-ways-to-contribute" class="anchor" aria-hidden="true" tabindex="-1" href="#other-ways-to-contribute"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他贡献方式</font></font></h3>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果您不是开发人员，还有许多其他不需要编程技能的可能性来帮助 QGIS 发展。查看我们的</font></font><a href="https://qgis.org/en/site/getinvolved/index.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">项目主页以获取更多信息</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</article></div>
